@@ -29,6 +29,10 @@
     "oidc-client": "^1.9.1",
     "popper.js": "^1.16.0",
     "rxjs": "^6.5.3",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.13.1",
+    "text-mask-addons": "^3.8.0",
+    "text-mask-core": "^5.1.2",
     "zone.js": "0.9.1"
   },
   "devDependencies": {

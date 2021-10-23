@@ -1,0 +1,57 @@
+<style>
+  div {
+    padding-top: 5px;
+  }
+</style>
+
+
+<div class="col-12">
+  <div class="row">
+    <div class="col-6">
+      <h1>Producto</h1>
+    </div>
+    <div class="col-6">
+      <button (click)="AbrirModal(null)" type="button" class="btn btn-outline-secondary btn-block text-center">
+        <i class="fa fa-plus" aria-hidden="true">Agregar Producto</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock.Min</th>
+          <th scope="col">Stock.Max</th>
+          <th scope="col" class="text-center" colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let objetoindividual of objetos">
+          <td>{{ objetoindividual.productoId }}</td>
+          <td>{{ objetoindividual.codigo }}</td>
+          <td>{{ objetoindividual.nombre }}</td>
+          <td>{{ commonService.formatearNumero(objetoindividual.precioVenta, ".", ",", 0, true) }}</td>
+          <td>{{ objetoindividual.stockMinimo }}</td>
+          <td>{{ objetoindividual.stockMaximo }}</td>
+          <td>
+            <button (click)="editar(objetoindividual.productoId)" type="button" class="btn btn-outline-success btn-block">
+              Editar
+            </button>
+          </td>
+          <td>
+            <button (click)="eliminar(objetoindividual.productoId)" type="button" class="btn btn-outline-success btn-block">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
