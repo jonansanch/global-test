@@ -12,8 +12,7 @@
         <div class="col-12 input-group">
           <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
             <label>Codigo</label>
-            <input id="codigo" type="text" formControlName="codigo" placeholder="codigo" maxlength="20"
-                   [textMask]="{mask: commonService.mascarasPredeterminadas('numerosregex'), guide: false}"
+            <input id="codigo" type="text" formControlName="codigo" placeholder="codigo" maxlength="20"                   
                    class="form-control  text-right">
           </div>
           <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
@@ -40,25 +39,7 @@
             <label>Stock Maximo</label>
             <input id="stockmax" type="text" formControlName="stockmax" placeholder="stock max"
                    maxlength="12" class="form-control  text-right">
-          </div>
-          <!--<div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-    <label>Precio</label>
-    <input id="precio" type="text" formControlName="precio" placeholder="precio"
-           [textMask]="{mask: commonService.mascarasPredeterminadas('dinero'), guide: false}" maxlength="12"
-           class="form-control  text-right">
-  </div>
-  <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-    <label>Stock Minimo</label>
-    <input id="stockmin" type="text" formControlName="stockmin" placeholder="stock min"
-           [textMask]="{mask: commonService.mascarasPredeterminadas('NumeroSinDecimales'), guide: false}" maxlength="12"
-           class="form-control  text-right">
-  </div>
-  <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-    <label>Stock Maximo</label>
-    <input id="stockmax" type="text" formControlName="stockmax" placeholder="stock max"
-           [textMask]="{mask: commonService.mascarasPredeterminadas('NumeroSinDecimales'), guide: false}" maxlength="12"
-           class="form-control  text-right">
-  </div>-->
+          </div>          
         </div>
       </div>
     </div>

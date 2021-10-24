@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductoService } from '../../../Servicios/producto.service';
-import { NgbActiveModal, NgbModal } from 'bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import swal from 'sweetalert2';
 import { CommonService } from '../../../common.service';
 
@@ -82,7 +82,7 @@ export class ModalProducto {
       , codigo: this.formProducto.get("codigo").value
       , nombre: this.formProducto.get("nombre").value
       , descripcion: this.formProducto.get("descripcion").value
-      , precioVenta: Number(this.commonService.setearValor(this.formProducto.get("precio").value, 0))
+      , precioVenta: Number(this.formProducto.get("precio").value)
       , stockMinimo: Number(this.formProducto.get("stockmin").value)
       , stockMaximo: Number(this.formProducto.get("stockmax").value)
     }

@@ -7,6 +7,7 @@ import { NgbModal } from 'bootstrap';
 import swal from 'sweetalert2';
 import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+//import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 // Servicios
 
 
@@ -196,41 +197,41 @@ export class CommonService implements OnInit {
   //  return nameMask;
   //}
 
-  codigoMaskExtendido(rawValue: string): RegExp[] {
-    const maskStr = /[A-Za-z0-9ñá-ź]+/;
-    const strLength = 20;
-    const codigoMask: RegExp[] = [];
-    for (let i = 1; i <= strLength; i++) {
-      codigoMask.push(maskStr);
-    }
-    return codigoMask;
-  }
+  //codigoMaskExtendido(rawValue: string): RegExp[] {
+  //  const maskStr = /[A-Za-z0-9ñá-ź]+/;
+  //  const strLength = 20;
+  //  const codigoMask: RegExp[] = [];
+  //  for (let i = 1; i <= strLength; i++) {
+  //    codigoMask.push(maskStr);
+  //  }
+  //  return codigoMask;
+  //}
 
-  public mascaraDescripcion(valor: string) {
-    const arregloDescripcion: any = [];
-    let cant: any = 0;
-    let arregloLength: any;
-    const descripcion = valor.split(' ');
-    descripcion.forEach(element => {
-      if (element != '') {
-        arregloDescripcion.push(element);
-        cant += element.length;
-      }
+  //public mascaraDescripcion(valor: string) {
+  //  const arregloDescripcion: any = [];
+  //  let cant: any = 0;
+  //  let arregloLength: any;
+  //  const descripcion = valor.split(' ');
+  //  descripcion.forEach(element => {
+  //    if (element != '') {
+  //      arregloDescripcion.push(element);
+  //      cant += element.length;
+  //    }
 
-    });
-    arregloLength = arregloDescripcion.length;
-    return { 'cantPalabra': arregloLength, 'cantCaracteres': cant };
-  }
+  //  });
+  //  arregloLength = arregloDescripcion.length;
+  //  return { 'cantPalabra': arregloLength, 'cantCaracteres': cant };
+  //}
 
-  public mascaraNombre(valor: string, exp, cantidad): RegExp[] {
-    const nameMask: RegExp[] = [];
-    if (exp != null) {
-      for (let i = 1; i <= cantidad; i++) {
-        nameMask.push(exp);
-      }
-    }
-    return nameMask;
-  }
+  //public mascaraNombre(valor: string, exp, cantidad): RegExp[] {
+  //  const nameMask: RegExp[] = [];
+  //  if (exp != null) {
+  //    for (let i = 1; i <= cantidad; i++) {
+  //      nameMask.push(exp);
+  //    }
+  //  }
+  //  return nameMask;
+  //}
 
   convertirArrayFecha(fecha, ymd = false) {
     if (fecha != null && fecha != undefined) {

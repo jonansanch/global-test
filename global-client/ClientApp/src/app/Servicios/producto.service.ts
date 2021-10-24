@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ProductoService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    console.log('Listo pa usar');
+    console.log('Listo pa usar el servicio');
 
   }
   //-----------------------------------------------------------------------------------------------Producto
