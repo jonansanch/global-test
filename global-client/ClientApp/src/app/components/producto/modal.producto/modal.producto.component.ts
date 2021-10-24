@@ -10,7 +10,7 @@ import { CommonService } from '../../../common.service';
   selector: 'app-modal-producto',
   templateUrl: './modal.producto.component.html',
 })
-export class ModalProducto {
+export class ModalProductoComponent {
   public formProducto: FormGroup;
   name: string;
   public dt = new Date();
@@ -23,7 +23,7 @@ export class ModalProducto {
     timer: 4000
   });
 
-  constructor(public activeModal: NgbActiveModal, private vServicio: ProductoService, public commonService: CommonService,
+  constructor(public activeModal: NgbActiveModal, private vServicio: ProductoService,
     private roter: Router) {
   }
 

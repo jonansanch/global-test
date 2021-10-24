@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductoComponent } from './components/producto/producto.component';
-import { ModalProducto } from './components/producto/modal.producto/modal.producto.component';
+import { ModalProductoComponent } from './components/producto/modal.producto/modal.producto.component';
 
 import { ProductoService } from './Servicios/producto.service';
 
@@ -18,6 +18,10 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { NgbActiveModal, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 //import { NgSelectModule } from '@ng-select/ng-select';
+
+
+//rutas menu
+import { APP_ROUTING } from '../app/app.route'
 
 @NgModule({
   declarations: [
@@ -27,7 +31,7 @@ import { CommonModule } from '@angular/common';
     CounterComponent,
     FetchDataComponent,
     ProductoComponent,
-    ModalProducto
+    ModalProductoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),            
@@ -39,17 +43,19 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     //NgSelectModule,
     TextMaskModule,    
-
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'producto', component: ProductoComponent },
-    ])
+    APP_ROUTING,    
   ],
   providers: [
     ProductoService,
     NgbActiveModal,
+  ],
+  entryComponents: [
+    NavMenuComponent,
+    HomeComponent,
+    CounterComponent,
+    FetchDataComponent,
+    ProductoComponent,
+    ModalProductoComponent,
   ],
   bootstrap: [AppComponent]
 })
