@@ -12,12 +12,12 @@
         <div class="col-12 input-group">         
           <div class="form-group col-sm-12 sol-md-6 col-lg-6 col-xl-6">
             <label>Nombre</label>
-            <input id="nomProducto" type="text" formControlName="nomProducto" placeholder="Nombre" maxlength="100"
-                   class="form-control  text-right">
+            <input id="nomProducto" type="text" formControlName="nomProducto" placeholder="Nombre" maxlength="100" (keypress)="soloLetras($event)" (blur)="limpia('nomProducto')"
+                   class="form-control">
           </div>
           <div class="form-group col-sm-12 sol-md-6 col-lg-6 col-xl-6">
             <label>Tarifa Descuento</label>
-            <input id="tariDescuento" type="text" formControlName="tariDescuento" placeholder="Tarifa Descuento"
+            <input id="tariDescuento" type="text" formControlName="tariDescuento" placeholder="Tarifa Descuento" (change)="soloNumeros($event)" (keypress)="soloNumeros($event)"
                    maxlength="2" class="form-control  text-right">
           </div>
         </div>

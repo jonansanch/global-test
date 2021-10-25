@@ -84,5 +84,50 @@ export class ModalProductoComponent {
 
   public cerrarModal(cerrar = null) {
     this.activeModal.close(cerrar);
-  }  
+  }
+
+  //Solo permite introducir numeros.
+  soloNumeros(e) {
+    var key = window.event ? e.which : e.keyCode;
+    //console.log("letra " + key )
+    if (key < 48 || key > 57) {
+      e.preventDefault();
+    }
+  }
+
+  //Solo permite introducir letras.
+  soloLetras(e) {
+    var key = e.keyCode || e.which,
+      tecla = String.fromCharCode(key).toLowerCase(),
+      letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+      especiales = [8, 39, 46],
+      tecla_especial = false;
+    //console.log("letra")
+    //console.log(e.keyCode)
+    //console.log(e.which)
+    for (var i in especiales) {
+      if (key == especiales[i]) {
+        tecla_especial = true;
+        break;
+      }
+    }
+
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+      return false;
+    }
+  }
+
+
+  //limpia caja de texto cuando pegan numeros con ctrl + v
+  limpia(campo) {
+    var val = this.formProducto.get(campo).value //document.getElementById(campo).value;
+    var tam = val.length;
+    for (var i = 0; i < tam; i++) {
+      if (val[i] == " ")
+        continue
+      if (!isNaN(val[i]) || val[i] == "%")
+        this.formProducto.get(campo).setValue("");
+      //document.getElementById(campo).value = '';
+    }
+  }
 }
