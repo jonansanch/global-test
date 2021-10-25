@@ -1,0 +1,63 @@
+<style>
+    div {
+        padding-top: 5px;
+    }
+</style>
+
+<!-- Facturas -->
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <h1>Facturas</h1>
+        </div>
+        <div class="col-6">
+            <button (click)="AbrirModal(null)" type="button" class="btn btn-outline-secondary btn-block text-center">
+                <i class="fa fa-plus" aria-hidden="true">Agregar Factura</i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- " -->
+<div class="row">  
+    <div class="col-12">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <!--<th scope="col">#ID</th>-->
+                <th scope="col">NumeroFactura</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">TipodePago</th>
+                <th scope="col">NombreCliente</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Descuentos</th>
+                <th scope="col">Impuestos</th>
+                <th scope="col">Total</th>
+                <th scope="col" class="text-center" colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let objetoindividual of objetos">
+                <!--<td>{{ objetoindividual.facturaId }}</td>-->
+                <td>{{ objetoindividual.numeroFactura }}</td>
+                <td>{{ objetoindividual.fecha }}</td>
+                <td>{{ objetoindividual.tipodePago }}</td>
+                <td>{{ objetoindividual.nombreCliente }}</td>
+                <td>{{ objetoindividual.subtotal }}</td>
+                <td>{{ objetoindividual.totalDescuento }}</td>
+                <td>{{ objetoindividual.totalImpuesto }}</td>
+                <td>{{ objetoindividual.total }}</td>
+                <td>
+                  <button *ngIf="objetoindividual.estado != 3" (click)="editar(objetoindividual.facturaId)" type="button" class="btn btn-outline-success btn-block">
+                    Editar
+                  </button>
+                </td>
+                <td>
+                  <button *ngIf="objetoindividual.estado != 3" (click)="eliminar(objetoindividual.facturaId)" type="button" class="btn btn-outline-success btn-block">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

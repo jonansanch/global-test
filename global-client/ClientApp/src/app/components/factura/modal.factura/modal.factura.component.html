@@ -1,0 +1,107 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+  <button type="button" (click)="cerrarModal()" class="btn btn-icon btn-danger btn-close-modal">
+    Cerrar<i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<!-- Modal Factura -->
+<div class="modal-body">
+  <form [formGroup]="formFactura">
+    <div class="form-row">
+      <div class="input-group pr-0 mb-1">
+        <div class="col-12 input-group">
+          <div class="from-group col-sm-12 sol-md-6 col-lg-6 col-xl-6">
+            <label>Tipos de Pago</label>            
+            <select formControlName="tipopago" name="tipopago" [(ngModel)]="tipopagoseleccionados" class="form-control">
+              <option [value]="item" *ngFor="let item of selectTipoPago">{{item}}</option>
+            </select>
+          </div>
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-6">
+            <label>Fecha</label>
+            <input class="form-control" placeholder="yyyy-mm-dd" name="fecha" formControlName="fecha" readonly
+                   (click)="d1.toggle()" ngbDatepicker [startDate]="startDate" [minDate]="minDate" #d1="ngbDatepicker">
+          </div>
+
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-6">
+            <label>No.Documento</label>
+            <input id="nodoc" type="text" formControlName="nodoc" placeholder="No.Documento" maxlength="15" (keypress)="soloNumeros($event)"
+                   class="form-control">
+          </div>
+
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-6">
+            <label>Nombre</label>
+            <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre" maxlength="150" (keypress)="soloLetras($event)" (blur)="limpia('nombre')"
+                   class="form-control">
+          </div>
+        </div>
+        <div class="input-group col-12 col-sm-12" *ngIf="nuevo">
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-3">
+            <label>Producto</label>
+            <select formControlName="producto" name="producto" [(ngModel)]="productseleccionados" (change)="nombreproducto($event)" class="form-control">
+              <option [value]="item.productoId + '-' +item.nomProducto" *ngFor="let item of selectProducto">{{item.nomProducto}}</option>
+            </select>
+          </div>
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-3">
+            <label>Cantidad</label>
+            <input id="cantidad" type="text" formControlName="cantidad" placeholder="Cantidad" maxlength="10"  (change)="soloNumeros($event)" (keypress)="soloNumeros($event)"
+                   class="form-control  text-right">
+          </div>
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-3">
+            <label>Valor</label>
+            <input id="valor" type="text" formControlName="valor" placeholder="Valor" maxlength="11"
+                   class="form-control  text-right">
+          </div>
+          <div class="col-sm-12 sol-md-6 col-lg-6 col-xl-3">
+            <label>Acciones</label>
+            <div class="row">
+              <div class="col-6">
+                <button (click)="agregarDetalle()" type="button" class="btn btn-outline-primary btn-block">
+                  + Detalle
+                </button>
+              </div>
+              <div class="col-6">
+                <button (click)="LimpiarDetalle()" type="button" class="btn btn-outline-success btn-block">
+                  Limpiar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group col-12 col-sm-12" *ngIf="nuevo">
+          <table class="display compact responsive w-100 table table-striped" style="width: 100%;">
+            <tr style="text-align:center">
+              <!--<th class="text-left">Id</th>-->
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th colspan="2" style="text-align:center">Acciones</th>
+            </tr>
+            <tr *ngFor="let obj of facturaDetalle">
+              <!--<td>{{obj.facturaDetalleId}}</td>-->
+              <td class="text-center">{{obj.nombreproducto}}</td>
+              <td class="text-center">{{obj.cantidad}}</td>
+              <td class="text-center">{{obj.precioUnitario}}</td>
+              <td style="text-align:center">
+                <i style="cursor: pointer" (click)="editarDetalle(obj.productoId)"><i class="fa fa-pencil-square-o"></i>Editar</i>
+              </td>
+              <td style="text-align:center">
+                <i style="cursor: pointer" (click)="eliminarDetalle(obj.productoId)"><i class="fa fa-minus-circle"></i>Eliminar</i>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="modal-footer">
+  <div class="input-group col-12 col-sm-12" *ngIf="!ocultar">
+    <div class="col-4" *ngIf="nuevo">
+      <button (click)="AgregarFactura()" type="button" class="btn btn-outline-primary btn-block text-center">
+        Registrar
+      </button>
+    </div>   
+  </div>
+</div>

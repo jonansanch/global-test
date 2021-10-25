@@ -11,7 +11,7 @@ namespace DomainLayer
         public string TipodePago { get; set; }
         public string DocumentoCliente { get; set; }
         public string NombreCliente { get; set; }
-        public long Subtotal { get; set; }
+        public int Subtotal { get; set; }
         public int Descuento { get; set; }
         public int IVA { get; set; }
         public int TotalDescuento { get; set; }

@@ -9,37 +9,17 @@
   <form [formGroup]="formProducto">
     <div class="form-row">
       <div class="input-group pr-0 mb-1">
-        <div class="col-12 input-group">
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-            <label>Codigo</label>
-            <input id="codigo" type="text" formControlName="codigo" placeholder="codigo" maxlength="20"                   
-                   class="form-control  text-right">
-          </div>
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
+        <div class="col-12 input-group">         
+          <div class="form-group col-sm-12 sol-md-6 col-lg-6 col-xl-6">
             <label>Nombre</label>
-            <input id="nombre" type="text" formControlName="nombre" placeholder="nombre" maxlength="100"
+            <input id="nomProducto" type="text" formControlName="nomProducto" placeholder="Nombre" maxlength="100"
                    class="form-control  text-right">
           </div>
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-            <label>Descripcion</label>
-            <input id="descripcion" type="text" formControlName="descripcion" placeholder="descripcion" maxlength="200"
-                   class="form-control  text-right">
+          <div class="form-group col-sm-12 sol-md-6 col-lg-6 col-xl-6">
+            <label>Tarifa Descuento</label>
+            <input id="tariDescuento" type="text" formControlName="tariDescuento" placeholder="Tarifa Descuento"
+                   maxlength="2" class="form-control  text-right">
           </div>
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-            <label>Precio</label>
-            <input id="precio" type="text" formControlName="precio" placeholder="precio"
-                   maxlength="12" class="form-control  text-right">
-          </div>
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-            <label>Stock Minimo</label>
-            <input id="stockmin" type="text" formControlName="stockmin" placeholder="stock min"
-                   maxlength="12" class="form-control  text-right">
-          </div>
-          <div class="form-group col-sm-12 sol-md-6 col-lg-4 col-xl-4">
-            <label>Stock Maximo</label>
-            <input id="stockmax" type="text" formControlName="stockmax" placeholder="stock max"
-                   maxlength="12" class="form-control  text-right">
-          </div>          
         </div>
       </div>
     </div>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersistenceLayer;
 
 namespace PersistenceLayer.Migrations
 {
     [DbContext(typeof(ContextDb))]
-    partial class ContextDbModelSnapshot : ModelSnapshot
+    [Migration("20211024234402_CambiosTablaFactura")]
+    partial class CambiosTablaFactura
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +56,9 @@ namespace PersistenceLayer.Migrations
                     b.Property<int>("NumeroFactura")
                         .HasColumnType("int");
 
-                    b.Property<int>("Subtotal")
+                    b.Property<long>("Subtotal")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("TipodePago")
@@ -108,10 +110,6 @@ namespace PersistenceLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValueSql("0");
-
-                    b.Property<string>("Nombreproducto")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("PrecioUnitario")
                         .ValueGeneratedOnAdd()

@@ -23,23 +23,17 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#ID</th>
-          <th scope="col">Codigo</th>
+          <th scope="col">#ID</th>          
           <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock.Min</th>
-          <th scope="col">Stock.Max</th>
+          <th scope="col">Tarifa Descuento</th>          
           <th scope="col" class="text-center" colspan="2">Acciones</th>
         </tr>
       </thead>
       <tbody>        
         <tr *ngFor="let objetoindividual of objetos">
-          <td>{{ objetoindividual.productoId }}</td>
-          <td>{{ objetoindividual.codigo }}</td>
-          <td>{{ objetoindividual.nombre }}</td>
-          <td>{{ objetoindividual.precioVenta }}</td>
-          <td>{{ objetoindividual.stockMinimo }}</td>
-          <td>{{ objetoindividual.stockMaximo }}</td>
+          <td>{{ objetoindividual.productoId }}</td>          
+          <td>{{ objetoindividual.nomProducto }}</td>
+          <td>{{ objetoindividual.tariDescuento }} %</td>          
           <td>
             <button (click)="editar(objetoindividual.productoId)" type="button" class="btn btn-outline-success btn-block">
               Editar

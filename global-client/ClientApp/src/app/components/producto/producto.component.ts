@@ -51,13 +51,12 @@ export class ProductoComponent implements OnInit {
   //Obtener estudiantes desde los servicios 
   ObtenerProductos() {
     console.log("llenamos rejilla");
-    //this.vServicio.obtenerProductos().subscribe((res: any[]) => {
-    //  console.log(res);
-    //  this.objetos = res;
-    //  console.log("Objeto")
-    //  console.log(this.objetos);
-
-    //});
+    this.vServicio.obtenerProductos().subscribe((res: any[]) => {
+      console.log(res);
+      this.objetos = res;
+      console.log("Objeto")
+      console.log(this.objetos);
+    });
   };
 
   editar(vId: number) {    

@@ -12,9 +12,11 @@ namespace PersistenceLayer
             entityBuilder.Property(x => x.TipodePago).IsRequired().HasMaxLength(30);
             entityBuilder.Property(x => x.DocumentoCliente).IsRequired().HasMaxLength(30);
             entityBuilder.Property(x => x.NombreCliente).IsRequired().HasMaxLength(30);
+            entityBuilder.Property(x => x.Subtotal).IsRequired().HasDefaultValueSql("0");
             entityBuilder.Property(x => x.Descuento).IsRequired().HasDefaultValueSql("0");
             entityBuilder.Property(x => x.IVA).IsRequired().HasDefaultValueSql("19");
             entityBuilder.Property(x => x.TotalDescuento).IsRequired().HasDefaultValueSql("0");
+            entityBuilder.Property(x => x.TotalImpuesto).IsRequired().HasDefaultValueSql("0");
             entityBuilder.Property(x => x.Total).IsRequired().HasDefaultValueSql("0");
         }
     }

@@ -18,6 +18,8 @@ using AutoMapper;
 using Services;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace global_client
 {
@@ -54,9 +56,20 @@ namespace global_client
 
             #region Servicios                        
             services.AddScoped<IProductoService, ProductoService>();
-            //services.AddScoped<IProveedorService, ProveedorService>();
-            //services.AddScoped<IRemisionService, RemisionService>();
+            services.AddScoped<IFacturaService, FacturaService>();
             #endregion
+
+            //services.AddControllersWithViews().AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+            //    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            //});
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             AddSwagger(services);
         }

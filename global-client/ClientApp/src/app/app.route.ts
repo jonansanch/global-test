@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductoComponent } from './components/producto/producto.component';
-import { ModalProductoComponent } from './components/producto/modal.producto/modal.producto.component';
+import { FacturaComponent } from './components/factura/factura.component';
 
 
 const APP_ROUTE: Routes = [
@@ -13,6 +13,7 @@ const APP_ROUTE: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent },
   { path: 'producto', component: ProductoComponent },
+  { path: 'factura', component: FacturaComponent },
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTE);

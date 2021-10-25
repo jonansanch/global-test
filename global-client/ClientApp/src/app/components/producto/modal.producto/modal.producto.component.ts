@@ -30,13 +30,9 @@ export class ModalProductoComponent {
   //-----------------------------------------------------------------------------------------------Modal Producto
 
   ngOnInit(): void {
-    this.formProducto = new FormGroup({
-      codigo: new FormControl(null, [Validators.required, Validators.maxLength(20)]),
-      nombre: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
-      descripcion: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
-      precio: new FormControl(null, [Validators.required, Validators.maxLength(15)]),
-      stockmin: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
-      stockmax: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
+    this.formProducto = new FormGroup({      
+      nomProducto: new FormControl(null, [Validators.required, Validators.maxLength(100)]),      
+      tariDescuento: new FormControl(null, [Validators.required, Validators.maxLength(15)]),      
       //dateOfBirth: new FormControl(null, [Validators.required]),
       //image: new FormControl('', [Validators.required]),
     })
@@ -52,14 +48,11 @@ export class ModalProductoComponent {
     this.vServicio.obtenerProductoxID(id).subscribe(
       (res: any) => {
         var formulario = res;
+        console.log(formulario, "respuesta");
         //this.frmFormulario.get('codigo').disable({ onlySelf: true });
-        if (formulario !== null && formulario !== undefined) {
-          this.formProducto.get('codigo').setValue(formulario.codigo);
-          this.formProducto.get('nombre').setValue(formulario.nombre);
-          this.formProducto.get('descripcion').setValue(formulario.descripcion);
-          this.formProducto.get('precio').setValue(formulario.precioVenta);
-          this.formProducto.get('stockmin').setValue(formulario.stockMinimo);
-          this.formProducto.get('stockmax').setValue(formulario.stockMaximo);
+        if (formulario !== null && formulario !== undefined) {          
+          this.formProducto.get('nomProducto').setValue(formulario.nomProducto);
+          this.formProducto.get('tariDescuento').setValue(formulario.tariDescuento);          
         } else {
           this.cerrarModal(true);
         }
@@ -78,13 +71,9 @@ export class ModalProductoComponent {
 
     let item =
     {
-      id_producto: Number(this.id)
-      , codigo: this.formProducto.get("codigo").value
-      , nombre: this.formProducto.get("nombre").value
-      , descripcion: this.formProducto.get("descripcion").value
-      , precioVenta: Number(this.formProducto.get("precio").value)
-      , stockMinimo: Number(this.formProducto.get("stockmin").value)
-      , stockMaximo: Number(this.formProducto.get("stockmax").value)
+      productoId: Number(this.id)      
+      , nomProducto: this.formProducto.get("nomProducto").value
+      , tariDescuento: Number(this.formProducto.get("tariDescuento").value)
     }
 
     this.vServicio.guardarProducto(item, this.id).subscribe((res: any) => {
