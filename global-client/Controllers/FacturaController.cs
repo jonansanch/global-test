@@ -61,6 +61,17 @@ namespace global_client.Controllers
         public object Delete(int vFacturaID)
         {
             var query = _service.EliminarFactura(vFacturaID);
+
+            if (query == false)
+            {
+                return new
+                {
+                    data = false,
+                    status = "error",
+                    msg = "error_modify"
+                };
+            }
+
             return new
             {
                 data = query,

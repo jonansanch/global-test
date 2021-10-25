@@ -13,8 +13,6 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 //Componentes
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 //Producto
 import { ProductoComponent } from './components/producto/producto.component';
@@ -37,9 +35,7 @@ import { APP_ROUTING } from '../app/app.route'
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    HomeComponent,    
     ProductoComponent,
     ModalProductoComponent,
     FacturaComponent,
@@ -64,9 +60,7 @@ import { APP_ROUTING } from '../app/app.route'
   ],
   entryComponents: [
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    HomeComponent,    
     ProductoComponent,
     ModalProductoComponent,
     FacturaComponent,

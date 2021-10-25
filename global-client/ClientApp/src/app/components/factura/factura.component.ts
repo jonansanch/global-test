@@ -61,8 +61,12 @@ export class FacturaComponent implements OnInit {
 
   eliminar(vId: number) {
     this.vServicio.eliminarFactura(vId).subscribe((r: any) => {
+      if (r.data == false) {
+        this.alertModal.fire({ icon: "warning", title: "No se pudo eliminar el registro favor validar por favor revisar" });
+        return
+      }
       this.alertModal.fire({ icon: "warning", title: "Eliminado exitosamente" });
-      this.ObtenerFacturas();
+      this.rerender();      
     });
   }
 

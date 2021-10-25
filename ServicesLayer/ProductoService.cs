@@ -31,14 +31,14 @@ namespace Services
             return productos;
         }
 
-        public object CrearProducto(ProductoDto data )
+        public object CrearProducto(ProductoDto data)
         {
             try
             {
                 Producto producto = new Producto();
-                
+
                 producto.NomProducto = data.NomProducto;
-                producto.TariDescuento = data.TariDescuento;                
+                producto.TariDescuento = data.TariDescuento;
 
                 context.Producto.Add(producto);
                 context.SaveChanges();
@@ -62,7 +62,7 @@ namespace Services
             }
         }
 
-        public object ActualizarProducto(int vProductoID, ProductoDto data )
+        public object ActualizarProducto(int vProductoID, ProductoDto data)
         {
             try
             {
@@ -77,9 +77,9 @@ namespace Services
                         msg = "error_modify"
                     };
                 }
-                
+
                 producto.NomProducto = data.NomProducto;
-                producto.TariDescuento = data.TariDescuento > 0 ? data.TariDescuento : 0;                
+                producto.TariDescuento = data.TariDescuento > 0 ? data.TariDescuento : 0;
 
                 context.Update(producto);
                 context.SaveChanges();
@@ -101,16 +101,23 @@ namespace Services
                 };
             }
         }
-        public Boolean EliminarProducto(int vProductoID )
+        public Boolean EliminarProducto(int vProductoID)
         {
-            var producto = context.Producto.Find(vProductoID);
-            if (producto == null)
+            try
+            {
+                var producto = context.Producto.Find(vProductoID);
+                if (producto == null)
+                {
+                    return false;
+                }
+                context.Producto.Remove(producto);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-            context.Producto.Remove(producto);
-            context.SaveChanges();
-            return true;
         }
     }
 }

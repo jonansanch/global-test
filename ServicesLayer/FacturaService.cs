@@ -31,7 +31,7 @@ namespace Services
             var factura = context.Factura
                                 .Include(c => c.FacturaDetalle)
                                 .ThenInclude(c => c.Producto)
-                                .Where(e => e.FacturaId == vFacturaID)                                
+                                .Where(e => e.FacturaId == vFacturaID)
                                 .FirstOrDefault();
             //var detalles = context.FacturaDetalle
             //                        .Include(c => c.Producto)
@@ -39,7 +39,7 @@ namespace Services
             //factura.FacturaDetalle = detalles;
 
             if (factura == null)
-                return null;            
+                return null;
 
             return _mapper.Map<FacturaDto>(factura); ;
         }
@@ -242,22 +242,29 @@ namespace Services
         }
         public Boolean EliminarFactura(int vFacturaId)
         {
-            var factura = context.Factura.Find(vFacturaId);
-            if (factura == null)
+            try
+            {
+                var factura = context.Factura.Find(vFacturaId);
+                if (factura == null)
+                {
+                    return false;
+                }
+
+                //DELETE Detalles factura                    
+                var lstOriginal = context.FacturaDetalle
+                                          .Where(e => e.FacturaId == factura.FacturaId)
+                                          .ToList();
+
+                context.FacturaDetalle.RemoveRange(lstOriginal);
+
+                context.Factura.Remove(factura);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            //DELETE Detalles factura                    
-            var lstOriginal = context.FacturaDetalle
-                                      .Where(e => e.FacturaId == factura.FacturaId)
-                                      .ToList();
-
-            context.FacturaDetalle.RemoveRange(lstOriginal);
-
-            context.Factura.Remove(factura);
-            context.SaveChanges();
-            return true;
         }
 
         public ObjListados ObtenerListados()

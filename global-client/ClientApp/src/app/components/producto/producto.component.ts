@@ -38,24 +38,18 @@ export class ProductoComponent implements OnInit {
     private roter: Router) {
   } 
 
-  ngOnInit(): void {
-    console.log("llegamos a productos");
+  ngOnInit(): void {    
     this.ObtenerProductos();
   }
 
-  rerender(): void {
-    console.log("recargamos rejilla");
+  rerender(): void {    
     this.ObtenerProductos();
   }
 
   //Obtener estudiantes desde los servicios 
-  ObtenerProductos() {
-    console.log("llenamos rejilla");
-    this.vServicio.obtenerProductos().subscribe((res: any[]) => {
-      console.log(res);
-      this.objetos = res;
-      console.log("Objeto")
-      console.log(this.objetos);
+  ObtenerProductos() {    
+    this.vServicio.obtenerProductos().subscribe((res: any[]) => {      
+      this.objetos = res;      
     });
   };
 
@@ -64,15 +58,18 @@ export class ProductoComponent implements OnInit {
   }
 
   eliminar(vId: number) {
-    this.vServicio.eliminarProducto(vId).subscribe((r: any) => {
+    this.vServicio.eliminarProducto(vId).subscribe((r: any) => {      
+      if (r.data == false) {
+        this.alertModal.fire({ icon: "warning", title: "No se pudo eliminar el registro favor validar por favor revisar" });
+        return
+      }
       this.alertModal.fire({ icon: "warning", title: "Eliminado exitosamente" });
       this.rerender();
     });
   }
 
   ////Evento para abrir el componente en el modal 
-  AbrirModal(id) {
-    console.log(id, "id pa modal");
+  AbrirModal(id) {    
     this.modal = this.modalService.open(ModalProductoComponent, {
       size: 'lg',
       backdrop: 'static',

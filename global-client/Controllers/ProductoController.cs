@@ -55,6 +55,16 @@ namespace global_client.Controllers
         public object Delete(int vProductoID)
         {
             var query = _service.EliminarProducto(vProductoID);
+
+            if (query == false)
+            {
+                return new
+                {
+                    data = false,
+                    status = "error",
+                    msg = "error_modify"
+                };
+            }
             return new
             {
                 data = query,
